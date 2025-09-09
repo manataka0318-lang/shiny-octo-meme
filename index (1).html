@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">Hello World! </h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your Fortune For Today</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+  body {
+    background-color: #fef7f0;
+    font-family: 'Pacifico', cursive;
+    color: #5a3e36;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+  }
+
+  #fortune-box {
+    background-color: #f9e4d4;
+    border: 3px solid #b36b40;
+    border-radius: 12px;
+    width: 350px;
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  #fortune-box.visible {
+    opacity: 1;
+  }
+
+  button {
+    margin-top: 30px;
+    font-size: 1.4em;
+    background-color: #b36b40;
+    border: none;
+    border-radius: 10px;
+    color: #fef7f0;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #d4865e;
+  }
+
+  #counter {
+    margin-top: 20px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    color: #8a5c4d;
+  }
+</style>
+</head>
+<body>
+
+<h1>Your Fortune For Today</h1>
+
+<div id="fortune-box"></div>
+
+<button id="fortune-button">Open Fortune Cookie</button>
+
+<div id="counter">Fortunes opened: 0</div>
+
+<script>
+  const fortunes = [
+    "A fresh start will put you on your way.",
+    "Happiness begins with facing life with a smile.",
+    "You will conquer obstacles to achieve success.",
+    "Your ability to accomplish tasks will keep you busy.",
+    "Unexpected financial gain is headed your way.",
+    "Adventure can be real happiness.",
+    "Today is a good day to try something new.",
+    "Trust your instincts; they will lead you right.",
+    "A new friendship will soon brighten your life.",
+    "Hard work soon pays off in your favor."
+  ];
+
+  const fortuneBox = document.getElementById('fortune-box');
+  const button = document.getElementById('fortune-button');
+  const counterDisplay = document.getElementById('counter');
+
+  let fortunesOpened = 0;
+
+  function showFortune() {
+    const randomIndex = Math.floor(Math.random() * fortunes.length);
+    const fortune = fortunes[randomIndex];
+
+    fortuneBox.classList.remove('visible');
+    setTimeout(() => {
+      fortuneBox.textContent = fortune;
+      fortuneBox.classList.add('visible');
+    }, 200);
+
+    fortunesOpened++;
+    counterDisplay.textContent = `Fortunes opened: ${fortunesOpened}`;
+  }
+
+  button.addEventListener('click', showFortune);
+</script>
+
+</body>
+</html>
